@@ -1,0 +1,13 @@
+identifier: hand_pose_sensor
+name: "Hand Pose Sensor nRF52840"
+type: mcu
+arch: arm
+ram: 256
+flash: 1024
+toolchain:
+  - zephyr
+supported:
+  - ble
+  - gpio
+  - i2c
+vendor: seweryn_malczewski

@@ -1,0 +1,3 @@
+
+add_subdirectory_ifdef(CONFIG_IMU imu)
+add_subdirectory_ifdef(CONFIG_MULTIPLEXER multiplexer)

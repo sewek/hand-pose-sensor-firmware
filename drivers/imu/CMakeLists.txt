@@ -1,0 +1,2 @@
+
+add_subdirectory_ifdef(CONFIG_IMU_DRIVER_MPU6050 mpu6050)

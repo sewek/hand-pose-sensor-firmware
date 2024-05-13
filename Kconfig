@@ -1,0 +1,107 @@
+menu "Hand Pose Sensor"
+
+if BT
+menu "Bluetooth"
+    menu "Services"
+        config BT_SERVICE_LATENCY
+            bool "Latency Service"
+            default n
+            select BT_LATENCY
+            help
+                Enable Latency Service
+
+        config BT_SERVICE_BATTERY
+            bool "Battery Service"
+            default n
+            select BT_BAS
+            help
+                Enable Battery Service
+
+        config BT_SERVICE_HAND_POSE
+            bool "Hand Pose Service"
+            default n
+            help
+                Enable Hand Pose Service
+
+    endmenu
+endmenu
+endif
+
+menuconfig IMU
+    bool "IMU Sensor"
+
+if IMU
+
+    config IMU_DRIVER_BUS_I2C
+        bool
+        default n
+
+    config IMU_DRIVER_BUS_SPI
+        bool
+        default n
+
+    choice
+        bool "IMU Sensor Driver"
+
+        config IMU_DRIVER_MPU6050
+            bool "MPU-6050"
+            select IMU_DRIVER_BUS_I2C
+            help
+              Enable MPU-6050 sensor driver
+
+    endchoice
+
+    if IMU_DRIVER_BUS_I2C
+        config IMU_I2C_ADDRESS
+            hex "IMU I2C Address"
+            default 0x68 if IMU_DRIVER_MPU6050
+            default 0x00
+            help
+                I2C address of the IMU sensor. If 0x00, default address from driver will be used.
+    endif
+endif
+
+menuconfig MULTIPLEXER
+    bool "Multiplexer"
+
+if MULTIPLEXER
+
+    config MULTIPLEXER_DRIVER_BUS_I2C
+        bool
+        default n
+
+    config MULTIPLEXER_DRIVER_BUS_SPI
+        bool
+        default n
+
+    choice
+        bool "Multiplexer Driver"
+
+        config MULTIPLEXER_DRIVER_TCA9548A
+            bool "TCA9548A"
+            select MULTIPLEXER_DRIVER_BUS_I2C
+            help
+              Enable TCA9548A multiplexer driver
+
+    endchoice
+
+    if MULTIPLEXER_DRIVER_BUS_I2C
+        config MULTIPLEXER_I2C_ADDRESS_START
+            hex "Multiplexer I2C Start Address"
+            default 0x70 if MULTIPLEXER_DRIVER_TCA9548A
+            default 0x00
+            help
+                I2C start address of the multiplexer. If 0x00, default address from driver will be used.
+
+        config MULTIPLEXER_I2C_ADDRESS_END
+            hex "Multiplexer I2C End Address"
+            default 0x77 if MULTIPLEXER_DRIVER_TCA9548A
+            default 0x00
+            help
+                I2C end address of the multiplexer. If 0x00, default address from driver will be used.
+    endif
+endif
+
+endmenu
+
+source "Kconfig.zephyr"

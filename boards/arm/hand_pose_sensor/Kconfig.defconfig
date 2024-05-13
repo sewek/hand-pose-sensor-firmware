@@ -1,0 +1,9 @@
+if BOARD_HAND_POSE_SENSOR
+
+config BOARD
+	default "hand_pose_sensor"
+
+config BT_CTLR
+	default BT
+
+endif # BOARD_HAND_POSE_SENSOR

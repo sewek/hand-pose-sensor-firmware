@@ -1,0 +1,23 @@
+{
+	"name": "Local workspace",
+	"build": {
+		"context": "..",
+		"dockerfile": "../Dockerfile"
+	},
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+		"source=${localWorkspaceFolder}/.vscode,target=/workdir/.vscode,type=bind"
+	],
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workdir/project,type=bind,consistency=cached",
+	"workspaceFolder": "/workdir",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cpptools",
+				"ms-vscode.cpptools-extension-pack",
+				"ms-vscode.cpptools-themes",
+				"nordic-semiconductor.nrf-connect-extension-pack"
+			]
+		}
+	}
+}

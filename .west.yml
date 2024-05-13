@@ -1,0 +1,13 @@
+manifest:
+  self:
+    path: project
+  remotes:
+    - name: hand-pose-sensor-firmware.git
+      url-base: git@github.com:sewek
+  projects:
+    - name: hand-pose-sensor-firmware.git
+      remote: hand-pose-sensor-firmware.git
+      path: hand-pose-sensor-firmware.git
+      revision: 10aed043f30c6920c3d0ee61a9e3f4877ade13c7
+      import: true
+      clone-depth: 1

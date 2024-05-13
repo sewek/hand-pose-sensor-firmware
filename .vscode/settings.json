@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "stddef.h": "c",
+        "printk.h": "c",
+        "uart.h": "c",
+        "bluetooth.h": "c",
+        "gatt_services.h": "c"
+    },
+    "nrf-connect.applications": [
+        "${workspaceFolder}/project"
+    ]
+}

@@ -1,0 +1,2 @@
+
+add_subdirectory_ifdef(CONFIG_MULTIPLEXER_DRIVER_TCA9548A tca9548a)

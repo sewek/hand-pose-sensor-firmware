@@ -12,7 +12,56 @@ The firmware has the following features:
 - Data logging: The firmware can log sensor data to an SD card for offline analysis.
 
 ## Getting started
-TODO: Add instructions on how to build and flash the firmware after setting up the development environment.
+
+### Easy way
+Easy way to get started is to use devcontainer. This will setup the development environment for you.
+Requirements:
+- Docker
+- Visual Studio Code
+- Remote - Containers extension for Visual Studio Code
+
+To get started:
+1. Clone the repository
+2. Open the repository in Visual Studio Code
+3. Click on the "Reopen in Container" button in the bottom right corner of Visual Studio Code
+4. Wait for the container to build
+5. Open a terminal in Visual Studio Code and run the following commands:
+```bash
+west init -l .
+west update
+west build -b hand_pose_sensor
+```
+6. Connect the nRF52840 DK to your computer using a USB cable
+7. Run the following command to flash the firmware to the nRF52840 DK:
+```bash
+west flash
+```
+
+### Manual way
+Requirements:
+- Python 3
+- pip
+- west
+- nRF Connect SDK
+
+To get started:
+1. Clone the repository
+2. Install the nRF Connect SDK by following the instructions [here](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_installing.html)
+3. Open a terminal and navigate to the root of the repository
+4. Run the following commands to initialize the nRF Connect SDK:
+```bash
+west init -l .
+west update
+```
+5. Run the following command to build the firmware:
+```bash
+west build -b hand_pose_sensor
+```
+6. Connect the nRF52840 DK to your computer using a USB cable
+7. Run the following command to flash the firmware to the nRF52840 DK:
+```bash
+west flash
+```
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

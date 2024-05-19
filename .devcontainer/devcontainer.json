@@ -17,7 +17,10 @@
 				"ms-vscode.cpptools-extension-pack",
 				"ms-vscode.cpptools-themes",
 				"nordic-semiconductor.nrf-connect-extension-pack"
-			]
+			],
+			"settings": {
+				"extensions.verifySignature": false
+			}
 		}
 	}
 }

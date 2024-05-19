@@ -8,6 +8,5 @@ toolchain:
   - zephyr
 supported:
   - ble
-  - gpio
   - i2c
 vendor: seweryn_malczewski

@@ -4,5 +4,5 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(firmware)
 
 add_subdirectory(src)
-add_subdirectory(drivers)
+#add_subdirectory(drivers)
 add_subdirectory(tests)

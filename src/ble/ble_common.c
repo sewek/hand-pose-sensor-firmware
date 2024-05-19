@@ -1,12 +1,8 @@
 
 #include "ble_common.h"
 
-#include <zephyr/bluetooth/bluetooth.h>
-#include <zephyr/bluetooth/hci.h>
-#include <zephyr/bluetooth/conn.h>
-#include <zephyr/bluetooth/uuid.h>
-#include <zephyr/bluetooth/gatt.h>
-#include <bluetooth/gatt_dm.h>
+// Variables
+struct bt_conn *bt_connection;
 
 // Helper functions
 static void ble_accept_pairing(void);
@@ -43,17 +39,16 @@ static struct bt_conn_auth_info_cb conn_auth_info_callbacks = {
     .pairing_complete = ble_auth_pairing_complete_cb,
     .pairing_failed = ble_auth_pairing_failed_cb};
 static struct bt_gatt_cb gatt_callbacks = {
-	.att_mtu_updated = ble_gatt_mtu_updated
-};
+    .att_mtu_updated = ble_gatt_mtu_updated};
 static struct bt_gatt_dm_cb discover_callbacks = {
     .completed = ble_gatt_discover_completed,
     .service_not_found = ble_gatt_discover_service_not_found,
     .error_found = ble_gatt_discover_error_found,
 };
 BT_CONN_CB_DEFINE(conn_callbacks) = {
-	.connected        = ble_connected_cb,
-	.disconnected     = ble_disconnected_cb,
-	.security_changed = ble_security_changed_cb,
+    .connected = ble_connected_cb,
+    .disconnected = ble_disconnected_cb,
+    .security_changed = ble_security_changed_cb,
 };
 
 int ble_init(void)
@@ -119,13 +114,21 @@ static void ble_connected_cb(struct bt_conn *conn, uint8_t err)
         return;
     }
 
+    bt_connection = bt_conn_ref(conn);
+
     printk("Connected to %s\n", addr);
 }
 
 static void ble_disconnected_cb(struct bt_conn *conn, uint8_t reason)
 {
     char addr[BT_ADDR_LE_STR_LEN];
-	bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr));
+    bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr));
+
+    if (bt_connection)
+    {
+        bt_conn_unref(bt_connection);
+        bt_connection = NULL;
+    }
 
     printk("Disconnected from %s (reason %d)\n", addr, reason);
 }

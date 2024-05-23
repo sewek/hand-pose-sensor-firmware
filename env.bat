@@ -1,0 +1,6 @@
+@echo off
+set PATH="C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2;C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\mingw64\bin;C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\bin;C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\opt\bin;C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\opt\bin\Scripts;C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\opt\nanopb\generator-bin;C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\opt\zephyr-sdk\aarch64-zephyr-elf\bin;C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\opt\zephyr-sdk\x86_64-zephyr-elf\bin;C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\opt\zephyr-sdk\arm-zephyr-eabi\bin;C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\opt\zephyr-sdk\riscv64-zephyr-elf\bin;%PATH%"
+set PYTHONPATH="C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\opt\bin;C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\opt\bin\Lib;C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\opt\bin\Lib\site-packages"
+set ZEPHYR_TOOLCHAIN_VARIANT="zephyr"
+set ZEPHYR_SDK_INSTALL_DIR="C:\Users\sewer\AppData\Roaming\ncs\toolchains\cf2149caf2\opt\zephyr-sdk"
+set ZEPHYR_BASE="C:\Users\sewer\AppData\Roaming\ncs\v2.6.1\zephyr"

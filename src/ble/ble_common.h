@@ -9,7 +9,7 @@
 #include <zephyr/bluetooth/gatt.h>
 #include <bluetooth/gatt_dm.h>
 
-#include "gatt_services.h"
+//#include "gatt_services.h"
 
 extern struct bt_conn *bt_connection;
 

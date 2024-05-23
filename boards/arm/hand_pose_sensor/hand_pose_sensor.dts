@@ -9,20 +9,29 @@
 	compatible = "hand_pose_sensor,nrf52840";
 
 	chosen {
-		zephyr,console = &uart0;
-		zephyr,shell-uart = &uart0;
-		zephyr,uart-mcumgr = &uart0;
-		zephyr,bt-mon-uart = &uart0;
-		zephyr,bt-c2h-uart = &uart0;
+		zephyr,console = &uart1;
+		zephyr,shell-uart = &uart1;
+		zephyr,uart-mcumgr = &uart1;
+		zephyr,bt-mon-uart = &uart1;
+		zephyr,bt-c2h-uart = &uart1;
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
 		zephyr,code-partition = &slot0_partition;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		led0: led_0 {
+			gpios = <&gpio1 15 GPIO_ACTIVE_LOW>;
+			label = "Blue LED";
+		};
 	};
 
 	aliases {
 		watchdog0 = &wdt0;
 		i2c-channel-0 = &ch0;
 		i2c-channel-1 = &ch1;
+		led = &led0;
 		imu0 = &mpu6050_0;
 		imu1 = &mpu6050_1;
 	};
@@ -43,14 +52,16 @@
 
 &gpio1 {
 	status = "okay";
+
+
 };
 
-&uart0 {
+&uart1 {
 	compatible = "nordic,nrf-uarte";
 	status = "okay";
 	current-speed = <115200>;
-	pinctrl-0 = <&uart0_default>;
-	pinctrl-1 = <&uart0_sleep>;
+	pinctrl-0 = <&uart1_default>;
+	pinctrl-1 = <&uart1_sleep>;
 	pinctrl-names = "default", "sleep";
 };
 

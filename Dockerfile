@@ -6,7 +6,7 @@ ARG SKD_NRF_BRANCH=v2.6.1
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NRFUTIL_HOME=/usr/local/share/nrfutil
 
-ENV LC_TIME=C.UTF-8 
+ENV LC_TIME=C.UTF-8
 
 # Update and setup environment
 RUN apt-get update
